@@ -6,22 +6,10 @@ services:
       - 3003:80 # computer:container
     env_file:
       - env_file.env
-    depends_on:
-      - redis
-    
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
 
   
   streamlit_service:
     build: ./frontend
-    volumes:
-      - ./data:/code/app/data
     env_file:
       - env_file.env
 
